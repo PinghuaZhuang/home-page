@@ -1,0 +1,45 @@
+{
+  "name": "pinghuazhuang.github.io",
+  "version": "0.1.0",
+  "description": "homepage",
+  "keywords": [
+    "homepage"
+  ],
+  "homepage": "https://github.com/PinghuaZhuang/PingHuaZhuang.github.io",
+  "bugs": {
+    "url": "https://github.com/PinghuaZhuang/PingHuaZhuang.github.io/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PinghuaZhuang/PingHuaZhuang.github.io.git"
+  },
+  "license": "MIT",
+  "author": "zhuangpinghua <zphua2016@gmail.com>",
+  "main": "src/main",
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "rollup -c config/rollup.config.js",
+    "sort": "sort-package-json package.json"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.13.16",
+    "@babel/plugin-transform-runtime": "^7.13.15",
+    "@babel/preset-env": "^7.13.15",
+    "cross-env": "5.2.0",
+    "rimraf": "2.6.2",
+    "rollup": "0.57.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "8.3.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "3.0.3",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-uglify": "1.0.0",
+    "node": "^16.4.0",
+    "sass": "^1.26.3",
+    "sort-package-json": "^1.50.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npm.taobao.org/"
+  }
+}
