@@ -8,7 +8,9 @@ module.exports = {
           'node': '0.10'
         },
         'modules': false,
-        'loose': false
+        'loose': false,
+        // 'useBuiltIns': 'usage',
+        // 'corejs': '3',
       }
     ]
   ],

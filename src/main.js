@@ -1,5 +1,8 @@
-const target = {
-  a: 'name'
-}
+import test from './test'
 
-console.log('xxxx', target)
+const target = Object.assign({
+  ab: 111,
+  c: [...[1, 2]]
+}, test)
+
+console.log('xxxx', target, test)

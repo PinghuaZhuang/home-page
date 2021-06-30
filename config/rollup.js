@@ -13,6 +13,7 @@ function getCompiler() {
   return babel({
     babelrc: true,
     runtimeHelpers: true,
+    // exclude: 'node_modules/**'
   })
 }
 
@@ -21,6 +22,7 @@ function getReplace() {
     PKG_VERSION: JSON.stringify(pkg.version),
   })
 }
+
 
 exports.banner = banner
 exports.getCompiler = getCompiler

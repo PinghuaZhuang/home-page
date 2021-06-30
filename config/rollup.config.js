@@ -12,10 +12,8 @@ var prod = process.env.NODE_ENV === 'production';
 module.exports = {
     input: 'src/main.js',
     output: {
-        file: prod ? 'lib/index.aio.min.js' : 'lib/index.aio.js',
+        file: prod ? 'dist/index.aio.min.js' : 'dist/index.aio.js',
         format: 'cjs',
-        // When export and export default are not used at the same time, set legacy to true.
-        // legacy: true,
         name: common.name,
         banner: common.banner,
     },
@@ -23,15 +21,10 @@ module.exports = {
         builtins(),
         common.getReplace(),
         nodeResolve({
-            main: true,
-            browser: true,
-            jsnext: true,
-            extensions: ['.ts', '.js', '.json']
+            dedupe: [],
         }),
-        commonjs({
-            // include: 'node_modules/**',
-        }),
-        common.getCompiler({}, true),
+        commonjs(),
+        common.getCompiler(),
         (prod && uglify()),
     ]
 };
