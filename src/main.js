@@ -5,4 +5,4 @@ const target = Object.assign({
   c: [...[1, 2]]
 }, test)
 
-console.log('xxxx', target, test)
+console.log('x', target, test)

@@ -3,6 +3,8 @@ var commonjs = require('rollup-plugin-commonjs')
 var uglify = require('rollup-plugin-uglify')
 var builtins = require('rollup-plugin-node-builtins')
 var copy = require('rollup-plugin-copy')
+var path = require('path')
+var fg = require('fast-glob')
 
 var common = require('./rollup.js')
 
@@ -16,13 +18,23 @@ module.exports = {
     banner: common.banner,
   },
   plugins: [
+    {
+      name: 'watch-external',
+      async buildStart(){
+        const files = await fg('public/**/*')
+        for(let file of files){
+            this.addWatchFile(file);
+        }
+      },
+    },
     copy({
       targets: [
         {
           src: 'public/index.html',
           dest: 'dist',
           transform: (contents, filename) =>
-            contents.toString()
+            contents
+              .toString()
               .replace('<%= title %>', '90909090')
               .replace('<%= baseUrl %>', '90909090')
           },
