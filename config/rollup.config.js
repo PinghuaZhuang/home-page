@@ -1,14 +1,17 @@
-var nodeResolve = require('rollup-plugin-node-resolve')
-var commonjs = require('rollup-plugin-commonjs')
-var uglify = require('rollup-plugin-uglify')
-var builtins = require('rollup-plugin-node-builtins')
-var copy = require('rollup-plugin-copy')
-var path = require('path')
-var fg = require('fast-glob')
+import nodeResolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
+import uglify from 'rollup-plugin-uglify'
+import builtins from 'rollup-plugin-node-builtins'
+import copy from 'rollup-plugin-copy'
+import fg from 'fast-glob'
+import pkg from '../package.json'
+import rpug from 'rollup-plugin-pug'
+import pug from 'pug'
+import path from 'path'
 
-var common = require('./rollup.js')
+const common = require('./rollup')
 
-var prod = process.env.NODE_ENV === 'production'
+const prod = process.env.NODE_ENV === 'production'
 
 module.exports = {
   input: 'src/main.js',
@@ -18,6 +21,9 @@ module.exports = {
     banner: common.banner,
   },
   plugins: [
+    rpug({
+      locals: pkg,
+    }),
     {
       name: 'watch-external',
       async buildStart(){
@@ -35,8 +41,14 @@ module.exports = {
           transform: (contents, filename) =>
             contents
               .toString()
-              .replace('<%= title %>', '90909090')
-              .replace('<%= baseUrl %>', '90909090')
+              .replace(/\<%= title %\>/g, pkg.name)
+              .replace(/\<%= baseUrl %\>/g, '/')
+              .replace(
+                /\<%= pug-entry %\>/g,
+                pug.renderFile(path.resolve(__dirname, '../src/pug/index.pug'), {
+                  name: 'Timothy'
+                })
+              )
           },
         { src: 'public/css', dest: 'dist' },
       ],
