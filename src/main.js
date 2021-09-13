@@ -1,4 +1,4 @@
 
 const Fullpage = fullpage
 
-new Fullpage
+new Fullpage('#fullpage')

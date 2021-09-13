@@ -32,10 +32,13 @@ module.exports = {
       name: 'watch-external',
       async buildStart(){
         const files = await fg('public/**/*')
-        const sources = await fg('src/**/*.pug')
+        const pugSources = await fg('src/**/*.pug')
+        const scssSources = await fg('src/**/*.scss')
+
         for(let file of [
           ...files,
-          ...sources,
+          ...pugSources,
+          ...scssSources,
           path.resolve(__dirname, '../package.json'),
           path.resolve(__dirname, '../.homepagerc'),
         ]) {
