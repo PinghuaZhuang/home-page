@@ -1,6 +1,6 @@
 import nodeResolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
-import uglify from 'rollup-plugin-uglify'
+import { uglify } from "rollup-plugin-uglify"
 import builtins from 'rollup-plugin-node-builtins'
 import copy from 'rollup-plugin-copy'
 import fg from 'fast-glob'
@@ -12,11 +12,13 @@ import path from 'path'
 const common = require('./rollup')
 
 const prod = process.env.NODE_ENV === 'production'
+const entry = prod ? 'entry.aio.min.js' : 'entry.aio.js'
+const dest = prod ? 'dist' : '.runtime'
 
 module.exports = {
   input: 'src/main.js',
   output: {
-    file: prod ? 'dist/index.aio.min.js' : 'dist/index.aio.js',
+    file: `${dest}/${entry}`,
     name: common.name,
     banner: common.banner,
   },
@@ -36,11 +38,15 @@ module.exports = {
     },
     copy({
       targets: [
+        { src: 'public/css', dest },
+        { src: 'public/assets', dest },
+        { src: 'public/js', dest },
+        { src: ['public/*'], dest },
         {
           src: 'public/index.html',
-          dest: 'dist',
-          transform: (contents, filename) =>
-            pug
+          dest,
+          transform: (contents, filename) => {
+            const ret = pug
               .renderFile(path.resolve(__dirname, '../src/index.pug'), {
                 "head": {
                   "title": "一个坏掉的番茄",
@@ -87,11 +93,10 @@ module.exports = {
                 }
               })
               .toString()
-              .replace(/\<%= title %\>/g, pkg.name)
+              .replace(/\<%= entry %\>/g, entry)
+            return ret
           },
-        { src: 'public/css', dest: 'dist' },
-        { src: 'public/assets', dest: 'dist' },
-        { src: 'public/js', dest: 'dist' },
+        },
       ],
     }),
     builtins(),
