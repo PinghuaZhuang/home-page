@@ -28,7 +28,8 @@ module.exports = {
       name: 'watch-external',
       async buildStart(){
         const files = await fg('public/**/*')
-        for(let file of files){
+        const sources = await fg('src/**/*.pug')
+        for(let file of [...files, ...sources]){
             this.addWatchFile(file);
         }
       },
@@ -39,18 +40,58 @@ module.exports = {
           src: 'public/index.html',
           dest: 'dist',
           transform: (contents, filename) =>
-            contents
+            pug
+              .renderFile(path.resolve(__dirname, '../src/index.pug'), {
+                "head": {
+                  "title": "一个坏掉的番茄",
+                  "description": "Author:ZhuangPinghua,Category:Personal Blog",
+                  "favicon": "favicon.ico"
+                },
+                "intro": {
+                  "title": "ZhuangPinghua",
+                  "subtitle": "Front engineer",
+                  "enter": "enter",
+                  "supportAuthor": true,
+                  "background": true
+                },
+                "main": {
+                  "name": "Simon Ma",
+                  "signature": "Code & Input & Output",
+                  "avatar": {
+                    "link": "assets/avatar.jpg",
+                    "height": "100",
+                    "width": "100"
+                  },
+                  "ul": {
+                    "first": {
+                      "href": "blog/",
+                      "icon": "bokeyuan",
+                      "text": "Blog"
+                    },
+                    "second": {
+                      "href": "about/",
+                      "icon": "xiaolian",
+                      "text": "About"
+                    },
+                    "third": {
+                      "href": "mailto:simon@tomotoes.com",
+                      "icon": "email",
+                      "text": "Email"
+                    },
+                    "fourth": {
+                      "href": "https://github.com/tomotoes",
+                      "icon": "github",
+                      "text": "Github"
+                    }
+                  }
+                }
+              })
               .toString()
               .replace(/\<%= title %\>/g, pkg.name)
-              .replace(/\<%= baseUrl %\>/g, '/')
-              .replace(
-                /\<%= pug-entry %\>/g,
-                pug.renderFile(path.resolve(__dirname, '../src/pug/index.pug'), {
-                  name: 'Timothy'
-                })
-              )
           },
         { src: 'public/css', dest: 'dist' },
+        { src: 'public/assets', dest: 'dist' },
+        { src: 'public/js', dest: 'dist' },
       ],
     }),
     builtins(),

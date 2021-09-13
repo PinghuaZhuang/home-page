@@ -1,4 +1,8 @@
-.a {
-  height: 100%;
-  background-color: gray;
-}
+@import 'common/variable';
+@import 'common/common';
+@import 'common/icon';
+
+@import 'layout/layout';
+
+@import 'intro/intro';
+@import 'main/main';
