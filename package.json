@@ -7,22 +7,21 @@
   ],
   "homepage": "https://github.com/PinghuaZhuang/PingHuaZhuang.github.io",
   "bugs": {
-    "url": "https://github.com/PinghuaZhuang/PingHuaZhuang.github.io/issues"
+    "url": "https://github.com/PinghuaZhuang/home-page/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PinghuaZhuang/PingHuaZhuang.github.io.git"
+    "url": "https://github.com/PinghuaZhuang/home-page"
   },
   "license": "MIT",
   "author": "zhuangpinghua <zphua2016@gmail.com>",
-  "main": "src/main",
   "scripts": {
     "clean": "rimraf ./dist",
     "build": "cross-env NODE_ENV=production rollup -c config/rollup.config.js",
     "sort": "sort-package-json package.json",
     "dev": "cross-env NODE_ENV=development npm-run-all --parallel --race watch browser",
     "watch": "rollup -c config/rollup.config.js --watch",
-    "browser": "cd .runtime & browser-sync start --server --index 'index.html' --files '.runtime'"
+    "browser": "cd .runtime & browser-sync start --server --index 'index.html' --files './'"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
@@ -51,5 +50,8 @@
   },
   "publishConfig": {
     "registry": "https://registry.npm.taobao.org/"
+  },
+  "dependencies": {
+    "fullpage.js": "^3.1.2"
   }
 }

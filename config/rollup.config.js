@@ -8,7 +8,9 @@ import pkg from '../package.json'
 import rpug from 'rollup-plugin-pug'
 import pug from 'pug'
 import path from 'path'
+import merge from 'lodash/merge'
 
+const { getJson } = require('./utils')
 const common = require('./rollup')
 
 const prod = process.env.NODE_ENV === 'production'
@@ -31,7 +33,12 @@ module.exports = {
       async buildStart(){
         const files = await fg('public/**/*')
         const sources = await fg('src/**/*.pug')
-        for(let file of [...files, ...sources]){
+        for(let file of [
+          ...files,
+          ...sources,
+          path.resolve(__dirname, '../package.json'),
+          path.resolve(__dirname, '../.homepagerc'),
+        ]) {
             this.addWatchFile(file);
         }
       },
@@ -45,57 +52,10 @@ module.exports = {
         {
           src: 'public/index.html',
           dest,
-          transform: (contents, filename) => {
-            const ret = pug
-              .renderFile(path.resolve(__dirname, '../src/index.pug'), {
-                "head": {
-                  "title": "一个坏掉的番茄",
-                  "description": "Author:ZhuangPinghua,Category:Personal Blog",
-                  "favicon": "favicon.ico"
-                },
-                "intro": {
-                  "title": "ZhuangPinghua",
-                  "subtitle": "Front engineer",
-                  "enter": "enter",
-                  "supportAuthor": true,
-                  "background": true
-                },
-                "main": {
-                  "name": "Simon Ma",
-                  "signature": "Code & Input & Output",
-                  "avatar": {
-                    "link": "assets/avatar.jpg",
-                    "height": "100",
-                    "width": "100"
-                  },
-                  "ul": {
-                    "first": {
-                      "href": "blog/",
-                      "icon": "bokeyuan",
-                      "text": "Blog"
-                    },
-                    "second": {
-                      "href": "about/",
-                      "icon": "xiaolian",
-                      "text": "About"
-                    },
-                    "third": {
-                      "href": "mailto:simon@tomotoes.com",
-                      "icon": "email",
-                      "text": "Email"
-                    },
-                    "fourth": {
-                      "href": "https://github.com/tomotoes",
-                      "icon": "github",
-                      "text": "Github"
-                    }
-                  }
-                }
-              })
-              .toString()
-              .replace(/\<%= entry %\>/g, entry)
-            return ret
-          },
+          transform: (contents, filename) => pug
+            .renderFile(path.resolve(__dirname, '../src/index.pug'), merge(getJson('../.homepagerc'), { pkg: getJson('../package.json') }))
+            .toString()
+            .replace(/\<%= entry %\>/g, entry)
         },
       ],
     }),
