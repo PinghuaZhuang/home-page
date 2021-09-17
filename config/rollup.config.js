@@ -3,9 +3,11 @@ import commonjs from 'rollup-plugin-commonjs'
 import { uglify } from "rollup-plugin-uglify"
 import builtins from 'rollup-plugin-node-builtins'
 import copy from 'rollup-plugin-copy'
+import sass from 'rollup-plugin-sass'
+import rpug from 'rollup-plugin-pug'
+
 import fg from 'fast-glob'
 import pkg from '../package.json'
-import rpug from 'rollup-plugin-pug'
 import pug from 'pug'
 import path from 'path'
 import merge from 'lodash/merge'
@@ -25,6 +27,10 @@ module.exports = {
     banner: common.banner,
   },
   plugins: [
+    sass({
+      output: true,
+      insert: true
+    }),
     rpug({
       locals: pkg,
     }),

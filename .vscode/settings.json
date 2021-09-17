@@ -1,5 +1,0 @@
-{
-  "dartsass.sassBinPath": "node_modules\\\\sass\\\\sass.js",
-  "dartsass.targetDirectory": "public/css",
-  "dartsass.outputFormat": "minified"
-}

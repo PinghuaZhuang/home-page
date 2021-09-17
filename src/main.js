@@ -1,3 +1,4 @@
+import './scss/index.scss'
 
 const Fullpage = fullpage
 
