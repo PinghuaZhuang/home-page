@@ -1,9 +1,9 @@
 import '@/scss/index.scss'
 
-// import { $, getOriginalContent } from './utils'
 import Fullpage from '@/asserts/fullpage.js'
 import { subTitleAction } from '@/action'
 import { enterAction } from '@/views/intro'
+import '@/views/main/fish'
 
 const fullpageApi = new Fullpage('#fullpage', {
   anchors: ['intro', 'main'],
@@ -12,9 +12,6 @@ const fullpageApi = new Fullpage('#fullpage', {
   lazyLoading: false,
 
   // events
-  // afterLoad,
-  // onLeave,
-
   // onLeave: function(origin, destination, direction){ console.log(1111, 'onLeave') },
 	// afterLoad: function(origin, destination, direction){ console.log(1111, 'afterLoad') },
 	// afterRender: function(){ console.log(1111, 'afterRender') },
