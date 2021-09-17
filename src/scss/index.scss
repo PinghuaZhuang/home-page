@@ -1,10 +1,6 @@
 @import 'common/variable';
 @import 'common/common';
 @import 'common/icon';
-// @import 'layout/layout';
-// @import 'intro/intro';
+@import 'layout/layout';
+@import '../views/intro/intro.scss';
 // @import 'main/main';
-
-.section:nth-child(1) {
-  background-color: #0798ec;
-}

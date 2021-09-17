@@ -1,0 +1,10 @@
+.content-intro
+  .content-inner
+    include ../../components/github-corner.pug
+
+    .wrap.animate__animated.animate__fadeIn
+      h2.content-title #{intro.title}
+      h3.content-subtitle(original-content=`${intro.subtitle}`) &nbsp;
+      a.enter #{intro.enter}
+      .arrow.arrow-1
+      .arrow.arrow-2
