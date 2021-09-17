@@ -1,9 +1,14 @@
 doctype html
 html(lang="en")
-	include components/head
+  include components/head
 
 body
-	main
-		//- include components/intro.pug
-		include views/main/main.pug
-		include components/scripts
+  main
+    //- include components/intro.pug
+    //- include views/main/main.pug
+    .content.content-main#fullpage
+      .section.content
+        include ./views/intro/intro.pug
+      .section.content
+        include ./views/main/main.pug
+    include components/scripts
