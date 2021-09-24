@@ -7,9 +7,7 @@
   "intro": {
     "title": "ZhuangPinghua",
     "subtitle": "Front engineer",
-    "enter": "enter",
-    "supportAuthor": true,
-    "background": true
+    "enter": "enter"
   },
   "main": {
     "name": "Zhuang Pinghua",
@@ -23,7 +21,7 @@
       "first": {
         "href": "blog/",
         "icon": "bokeyuan",
-        "text": "Blog"
+        "text": "Old-blog"
       },
       "second": {
         "href": "about/",
@@ -31,12 +29,12 @@
         "text": "About"
       },
       "third": {
-        "href": "mailto:simon@tomotoes.com",
+        "href": "mailto:zphua2016@gmail.com",
         "icon": "email",
         "text": "Email"
       },
       "fourth": {
-        "href": "https://github.com/tomotoes",
+        "href": "https://github.com/PinghuaZhuang",
         "icon": "github",
         "text": "Github"
       }

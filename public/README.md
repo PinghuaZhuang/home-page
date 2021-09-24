@@ -4,14 +4,6 @@
 
 
 
-## 🎯 TODO
-
-- [x] git action
-- [ ] a dark room
-- [ ] main-page
-
-
-
 
 ## 😆 技术栈
 
