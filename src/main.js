@@ -4,7 +4,7 @@ import './asserts/background'
 
 import Fullpage from '@/asserts/fullpage.js'
 import { subTitleAction/* , bgAction */ } from '@/action'
-import { enterAction, onLeave as introOnLeave } from '@/views/intro'
+import { enterAction, onLeave as introOnLeave, afterLoad as introAfterLoad } from '@/views/intro'
 import '@/views/main'
 // import '@/views/main/fish'
 
@@ -14,10 +14,12 @@ const fullpageApi = new Fullpage('#fullpage', {
 	easingcss3: 'ease',
   lazyLoading: false,
 
-  onLeave: function(...rest) {
-    console.log('....rest', rest)
+  onLeave(...rest) {
     introOnLeave(...rest)
-  }
+  },
+  afterLoad(...rest) {
+    introAfterLoad(...rest)
+  },
 
   // events
   // onLeave: function(origin, destination, direction){ console.log(1111, 'onLeave') },

@@ -942,15 +942,15 @@ const changeColor = () => {
 }
 
 const initBackground = () => {
-	if (initBackground.loaded) {
+	if (initBackground.loaded || canvas == null) {
     return
 	}
 	initBackground.loaded = true
 	changeColor()
 	updateKeywords();
 	initFramebuffers();
-	multipleSplats(parseInt(Math.random() * 20) + 5);
-	update(true)
+	autoMultipleSplats();
+	update(true);
 }
 
 window.addEventListener(visibilityChangeEvent, initBackground)
@@ -1219,6 +1219,10 @@ function splatPointer(pointer) {
 	splat(pointer.texcoordX, pointer.texcoordY, dx, dy, pointer.color);
 }
 
+export function autoMultipleSplats() {
+  multipleSplats(parseInt(Math.random() * 20) + 5)
+}
+
 function multipleSplats(amount) {
 	for (let i = 0; i < amount; i++) {
 		const color = generateColor();
@@ -1396,8 +1400,11 @@ function hashCode(s) {
 	return hash;
 };
 
-// TODO: 切换到主页面的时候要隐藏首页
 document.addEventListener("mousedown", e => {
+  if (config.SWITCHED) {
+    return
+  }
+
 	let posX = scaleByPixelRatio(e.pageX);
 	let posY = scaleByPixelRatio(e.pageY);
 	let pointer = pointers.find(p => p.id == -1);
@@ -1406,6 +1413,10 @@ document.addEventListener("mousedown", e => {
 });
 
 document.addEventListener("mousemove", e => {
+  if (config.SWITCHED) {
+    return
+  }
+
 	let pointer = pointers[0];
 	if (!pointer.down) return;
 	let posX = scaleByPixelRatio(e.pageX);
@@ -1414,10 +1425,18 @@ document.addEventListener("mousemove", e => {
 });
 
 document.addEventListener("mouseup", () => {
+  if (config.SWITCHED) {
+    return
+  }
+
 	updatePointerUpData(pointers[0]);
 });
 
 document.addEventListener("touchstart", e => {
+  if (config.SWITCHED) {
+    return
+  }
+
 	e.preventDefault();
 	const touches = e.targetTouches;
 	while (touches.length >= pointers.length)
@@ -1432,6 +1451,10 @@ document.addEventListener("touchstart", e => {
 document.addEventListener(
 	"touchmove",
 	e => {
+    if (config.SWITCHED) {
+      return
+    }
+
 		e.preventDefault();
 		const touches = e.targetTouches;
 		for (let i = 0; i < touches.length; i++) {
@@ -1446,6 +1469,10 @@ document.addEventListener(
 );
 
 document.addEventListener("touchend", e => {
+  if (config.SWITCHED) {
+    return
+  }
+
 	const touches = e.changedTouches;
 	for (let i = 0; i < touches.length; i++) {
 		let pointer = pointers.find(p => p.id == touches[i].identifier);

@@ -12,8 +12,11 @@ main {
 	position: relative;
   left: 0;
   top: 0;
-	// background: radial-gradient(#313131,#0a0a0a);
   overflow: hidden;
+
+  .conent-page {
+    background: radial-gradient(#313131,#0a0a0a);
+  }
 
 	&-intro {
 		height: 100vh;
