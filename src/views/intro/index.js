@@ -25,6 +25,22 @@ export const enterAction = function(fullpageApi) {
   })
 }
 
+export function onLeave(origin, destination, direction) {
+  if (origin.anchor !== destination.anchor) {
+    if (origin.anchor === 'intro') {
+      bus.emit(`introLeave`, origin, destination, direction)
+    }
+  }
+}
+
+export function afterLoad(origin, destination, direction) {
+  if (origin.anchor !== destination.anchor) {
+    if (destination.anchor === 'intro') {
+      bus.emit(`introEnter`, origin, destination, direction)
+    }
+  }
+}
+
 // 进入的时候, 开启动画
 // document.addEventListener('DOMContentLoaded', () => {
 //   const animationEles = document.querySelectorAll('.content-intro .animate__animated')
@@ -52,19 +68,3 @@ export const enterAction = function(fullpageApi) {
 //     } */
 //   }
 // }
-
-export function onLeave(origin, destination, direction) {
-  if (origin.anchor !== destination.anchor) {
-    if (origin.anchor === 'intro') {
-      bus.emit(`introLeave`, origin, destination, direction)
-    }
-  }
-}
-
-export function afterLoad(origin, destination, direction) {
-  if (origin.anchor !== destination.anchor) {
-    if (destination.anchor === 'intro') {
-      bus.emit(`introEnter`, origin, destination, direction)
-    }
-  }
-}
