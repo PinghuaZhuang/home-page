@@ -1,6 +1,14 @@
-# ZhuangPinghua-Homepage
+# Homepage
 
 炫酷的个人主页. 开发中...
+
+
+
+## 🎯 TODO
+
+- [ ] git action
+- [ ] a dark room
+- [ ] main-page
 
 
 
