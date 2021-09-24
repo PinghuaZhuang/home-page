@@ -7,7 +7,7 @@ import { autoMultipleSplats } from '@/asserts/background'
 bus.on('introLeave', () => {
   backgroundConfig.SWITCHED = true
 })
-bus.on('introEnter', () => {
+bus.on('introEnterBefore', () => {
   backgroundConfig.SWITCHED = false
   autoMultipleSplats()
 })
@@ -29,6 +29,8 @@ export function onLeave(origin, destination, direction) {
   if (origin.anchor !== destination.anchor) {
     if (origin.anchor === 'intro') {
       bus.emit(`introLeave`, origin, destination, direction)
+    } else if (origin.anchor === 'main' && destination.anchor === 'intro') {
+      bus.emit(`introEnterBefore`, origin, destination, direction)
     }
   }
 }

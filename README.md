@@ -42,3 +42,6 @@
    ```bash
    yarn build
    ```
+
+配置文件: `.homepagerc`
+

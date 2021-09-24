@@ -19,14 +19,14 @@
     },
     "ul": {
       "first": {
-        "href": "blog/",
+        "href": "old-blog/",
         "icon": "bokeyuan",
-        "text": "Old-blog"
+        "text": "Old blog"
       },
       "second": {
-        "href": "about/",
+        "href": "about-me/",
         "icon": "xiaolian",
-        "text": "About"
+        "text": "About me"
       },
       "third": {
         "href": "mailto:zphua2016@gmail.com",
