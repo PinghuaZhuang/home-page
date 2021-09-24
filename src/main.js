@@ -1,15 +1,23 @@
 import '@/scss/index.scss'
 
+import './asserts/background'
+
 import Fullpage from '@/asserts/fullpage.js'
-import { subTitleAction } from '@/action'
-import { enterAction } from '@/views/intro'
-import '@/views/main/fish'
+import { subTitleAction/* , bgAction */ } from '@/action'
+import { enterAction, onLeave as introOnLeave } from '@/views/intro'
+import '@/views/main'
+// import '@/views/main/fish'
 
 const fullpageApi = new Fullpage('#fullpage', {
   anchors: ['intro', 'main'],
   easing: 'easeInOutCubic',
 	easingcss3: 'ease',
   lazyLoading: false,
+
+  onLeave: function(...rest) {
+    console.log('....rest', rest)
+    introOnLeave(...rest)
+  }
 
   // events
   // onLeave: function(origin, destination, direction){ console.log(1111, 'onLeave') },
@@ -26,6 +34,8 @@ const fullpageApi = new Fullpage('#fullpage', {
 document.addEventListener('DOMContentLoaded', () => {
   // 副标题的动效
   subTitleAction()
+  // 背景特效
+  // bgAction()
   // 点击进入main
   enterAction(fullpageApi)
 })

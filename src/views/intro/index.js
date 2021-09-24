@@ -1,5 +1,11 @@
-import { $ } from '@/utils'
+import { $, bus } from '@/utils'
+import './intro.scss'
+import { backgroundConfig } from '@/var'
 // import delay from 'lodash/delay'
+
+bus.on('introLeave', () => {
+  backgroundConfig.SWITCHED = true
+})
 
 // 进入的时候, 开启动画
 export const enterAction = function(fullpageApi) {
@@ -42,13 +48,11 @@ export const enterAction = function(fullpageApi) {
 //   }
 // }
 
-// export function onLeave(origin, destination, direction) {
-//   console.log('onLeave', origin, destination, direction)
-//   if (origin.anchor !== destination.anchor) {
-//     if (origin.anchor === 'main') {
-//       onLeave.timer = delay(() => {
-//         bus.emit(`introEnter`)
-//       }, 1)
-//     }
-//   }
-// }
+export function onLeave(origin, destination, direction) {
+  console.log('onLeave', origin, destination, direction)
+  if (origin.anchor !== destination.anchor) {
+    if (origin.anchor === 'intro') {
+      bus.emit(`introLeave`, origin, destination, direction)
+    }
+  }
+}
