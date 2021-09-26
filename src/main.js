@@ -6,7 +6,7 @@ import Fullpage from '@/asserts/fullpage.js'
 import { subTitleAction/* , bgAction */ } from '@/action'
 import { enterAction, onLeave as introOnLeave, afterLoad as introAfterLoad } from '@/views/intro'
 import '@/views/main'
-// import '@/views/main/fish'
+// import '@/views/main/fish' // 特效
 
 const fullpageApi = new Fullpage('#fullpage', {
   anchors: ['intro', 'main'],

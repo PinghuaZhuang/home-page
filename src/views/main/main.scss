@@ -6,6 +6,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+  flex-direction: column;
 
 	text-align: center;
 	transition: width ease 0.5s, height ease 0.5s;

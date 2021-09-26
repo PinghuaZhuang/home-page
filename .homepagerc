@@ -17,27 +17,27 @@
       "height": "100",
       "width": "100"
     },
-    "ul": {
-      "first": {
+    "ul": [
+      {
         "href": "old-blog/",
         "icon": "bokeyuan",
         "text": "Old blog"
       },
-      "second": {
+      {
         "href": "about-me/",
         "icon": "xiaolian",
         "text": "About me"
       },
-      "third": {
+      {
         "href": "mailto:zphua2016@gmail.com",
         "icon": "email",
         "text": "Email"
       },
-      "fourth": {
+      {
         "href": "https://github.com/PinghuaZhuang",
         "icon": "github",
         "text": "Github"
       }
-    }
+    ]
   }
 }
