@@ -21,10 +21,13 @@ export function subTitleAction() {
 export function describeAutoType() {
   const seletors = document.querySelectorAll(`[auto-type]`)
   seletors.forEach(el => {
+    el.classList.add('auto-type')
     const text = el.getAttribute('auto-type')
     new AutoType(el, [
       { type: 'text', text, time: 150 }
-    ])
+    ]).once('end', () => {
+      el.classList.remove('auto-type')
+    })
   })
 }
 
