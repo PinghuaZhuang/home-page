@@ -1,4 +1,6 @@
 import { $, getOriginalContent } from '@/utils'
+import AutoType from '@/asserts/autotype.js'
+// const AutoType = require('@/asserts/autotype.js')
 
 export function subTitleAction() {
   return new Promise(resolve => {
@@ -13,6 +15,16 @@ export function subTitleAction() {
         resolve()
       }, 270)
     }, 0)
+  })
+}
+
+export function describeAutoType() {
+  const seletors = document.querySelectorAll(`[auto-type]`)
+  seletors.forEach(el => {
+    const text = el.getAttribute('auto-type')
+    new AutoType(el, [
+      { type: 'text', text, time: 150 }
+    ])
   })
 }
 

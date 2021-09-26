@@ -4,7 +4,7 @@
       header
         img(src=`${main.avatar.link}` width=`${main.avatar.width}` height=`${main.avatar.height}` alt="avatar")
         h1(data-translate="name") #{main.name}
-        h2#signature(data-translate="signature") #{main.signature}
+        h2#signature(data-translate="signature" auto-type=`${main.signature}`)
       ul
         each item in main.ul
           li

@@ -5,7 +5,7 @@ import './asserts/background'
 import Fullpage from '@/asserts/fullpage.js'
 import { subTitleAction/* , bgAction */ } from '@/action'
 import { enterAction, onLeave as introOnLeave, afterLoad as introAfterLoad } from '@/views/intro'
-import '@/views/main'
+import { afterLoad as mainAfterLoad } from '@/views/main'
 // import '@/views/main/fish' // 特效
 
 const fullpageApi = new Fullpage('#fullpage', {
@@ -19,6 +19,7 @@ const fullpageApi = new Fullpage('#fullpage', {
   },
   afterLoad(...rest) {
     introAfterLoad(...rest)
+    mainAfterLoad(...rest)
   },
 
   // events
