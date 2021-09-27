@@ -23,3 +23,4 @@ jobs:
           branch: master
           folder: dist
           token: ${{ secrets.TOKEN }}
+          clean: false
