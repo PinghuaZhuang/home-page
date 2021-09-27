@@ -27,7 +27,12 @@
 
 样式使用 `dark-sass` . 使用 `vscode` 插件自动编译生成 `css` 文件.
 
-> 注意点: 修改 src/scss/\*\*/\*.scss 文件, 要更新 src/scss/\*\*/index.scss 内容才能及时响应.
+> 注意点:
+>
+> 1. 修改 src/scss/\*\*/\*.scss 文件, 要更新 src/scss/\*\*/index.scss 内容才能及时响应.
+>
+> 2. 第一次执行之前要先执行 yarn watch
+
 
 1. 安装依赖
 
