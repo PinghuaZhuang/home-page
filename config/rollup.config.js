@@ -35,7 +35,7 @@ module.exports = {
       },
     }),
     sass({
-      output: true,
+      output: path.resolve(__dirname, `../${dest}/css/bundle.min.css`),
       insert: true
     }),
     rpug({
