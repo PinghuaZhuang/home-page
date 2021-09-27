@@ -1,6 +1,6 @@
 # Homepage
 
-炫酷的个人主页. 
+炫酷的个人主页.
 
 
 
@@ -9,7 +9,7 @@
 - [x] git action
 - [ ] a dark room
 - [ ] about-me
-- [ ] old-blog
+- [x] old-blog
 - [ ] blog
 - [ ] photo wall
 
@@ -49,4 +49,3 @@
    ```
 
 配置文件: `.homepagerc`
-
