@@ -1,6 +1,6 @@
 # Homepage
 
-[![Deploy to GitHub Pages](https://github.com/PinghuaZhuang/home-page/actions/workflows/deploy.yml/badge.svg)](https://github.com/PinghuaZhuang/home-page/actions/workflows/deploy.yml)
+[![Deploy to GitHub Pages](https://github.com/PinghuaZhuang/home-page/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/PinghuaZhuang/home-page/actions/workflows/deploy.yml)
 
 炫酷的个人主页.
 
