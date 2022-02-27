@@ -53,7 +53,7 @@ module.exports = {
           ...pugSources,
           ...scssSources,
           path.resolve(__dirname, '../package.json'),
-          path.resolve(__dirname, '../.homepagerc'),
+          path.resolve(__dirname, '../.homepage'),
         ]) {
             this.addWatchFile(file);
         }
@@ -69,7 +69,7 @@ module.exports = {
           src: 'public/index.html',
           dest,
           transform: (contents, filename) => pug
-            .renderFile(path.resolve(__dirname, '../src/index.pug'), merge(getJson('../.homepagerc'), { pkg: getJson('../package.json') }))
+            .renderFile(path.resolve(__dirname, '../src/index.pug'), merge(getJson('../.homepage'), { pkg: getJson('../package.json') }))
             .toString()
             .replace(/\<%= entry %\>/g, entry)
         },

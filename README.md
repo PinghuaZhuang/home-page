@@ -1,6 +1,5 @@
 # Homepage
 
-[![Deploy to GitHub Pages](https://github.com/PinghuaZhuang/home-page/actions/workflows/deploy.yml/badge.svg?branch=master)](https://github.com/PinghuaZhuang/home-page/actions/workflows/deploy.yml)
 
 炫酷的个人主页.
 
@@ -55,4 +54,4 @@
    yarn build
    ```
 
-配置文件: `.homepagerc`
+配置文件: `.homepage`
