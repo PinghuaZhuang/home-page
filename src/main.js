@@ -1,6 +1,6 @@
 import "@/scss/index.scss";
-
 import "./asserts/background";
+import "./icons";
 
 import Fullpage from "@/asserts/fullpage.js";
 import { subTitleAction /* , bgAction */ } from "@/action";

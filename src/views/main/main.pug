@@ -9,7 +9,10 @@
         each item in main.ul
           li
             a(href=`${item.href}` aria-label=`${item.text}`)
-              i(class=`icon icon-${item.icon}`)
+              //- i(class=`icon icon-${item.icon}`)
+              div
+                svg(class=`svg-icon` aria-hidden="true")
+                  use(xlink:href=`#icon-${item.icon}`)
               span(data-translate=`${item.text}`) #{item.text}
   //- #jsi-flying-fish-container
   //- .animate__slideInUp.animate__animated

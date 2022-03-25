@@ -6,6 +6,8 @@ import copy from "rollup-plugin-copy";
 import sass from "rollup-plugin-sass";
 import rpug from "rollup-plugin-pug";
 import alias from "rollup-plugin-alias";
+import svgSpriteLoader from "rollup-plugin-svg-sprite-loader";
+import requireContext from "rollup-plugin-require-context";
 
 import fg from "fast-glob";
 import pkg from "../package.json";
@@ -41,6 +43,10 @@ module.exports = {
     rpug({
       locals: pkg,
     }),
+    svgSpriteLoader({
+      symbolIdQuery: "icon-[name]",
+    }),
+    requireContext(),
     {
       name: "watch-external",
       async buildStart() {
