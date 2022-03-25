@@ -1,34 +1,32 @@
-import { $, getOriginalContent } from '@/utils'
-import AutoType from '@/asserts/autotype.js'
+import { $, getOriginalContent } from "@/utils";
+import AutoType from "@/asserts/autotype.js";
 // const AutoType = require('@/asserts/autotype.js')
 
 export function subTitleAction() {
-  return new Promise(resolve => {
-    const subtitle = getOriginalContent(".content-subtitle")
+  return new Promise((resolve) => {
+    const subtitle = getOriginalContent(".content-subtitle");
 
     setTimeout(() => {
-      $('.wrap').classList.add('in')
+      $(".wrap").classList.add("in");
       setTimeout(() => {
-        $('.content-subtitle').innerHTML = `<span>${[...subtitle].join(
-          '</span><span>'
-        )}</span>`
-        resolve()
-      }, 270)
-    }, 0)
-  })
+        $(".content-subtitle").innerHTML = `<span>${[...subtitle].join(
+          "</span><span>"
+        )}</span>`;
+        resolve();
+      }, 270);
+    }, 0);
+  });
 }
 
 export function describeAutoType() {
-  const seletors = document.querySelectorAll(`[auto-type]`)
-  seletors.forEach(el => {
-    el.classList.add('auto-type')
-    const text = el.getAttribute('auto-type')
-    new AutoType(el, [
-      { type: 'text', text, time: 150 }
-    ]).once('end', () => {
-      el.classList.remove('auto-type')
-    })
-  })
+  const seletors = document.querySelectorAll(`[auto-type]`);
+  seletors.forEach((el) => {
+    el.classList.add("auto-type");
+    const text = el.getAttribute("auto-type");
+    new AutoType(el, [{ type: "text", text, time: 150 }]).once("end", () => {
+      el.classList.remove("auto-type");
+    });
+  });
 }
 
 // 背景特效

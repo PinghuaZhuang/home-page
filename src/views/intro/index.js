@@ -1,44 +1,44 @@
-import { $, bus } from '@/utils'
-import './intro.scss'
-import { backgroundConfig } from '@/var'
+import { $, bus } from "@/utils";
+import "./intro.scss";
+import { backgroundConfig } from "@/var";
 // import delay from 'lodash/delay'
-import { autoMultipleSplats } from '@/asserts/background'
+import { autoMultipleSplats } from "@/asserts/background";
 
-bus.on('introLeave', () => {
-  backgroundConfig.SWITCHED = true
-})
-bus.on('introEnterBefore', () => {
-  backgroundConfig.SWITCHED = false
-  autoMultipleSplats()
-})
+bus.on("introLeave", () => {
+  backgroundConfig.SWITCHED = true;
+});
+bus.on("introEnterBefore", () => {
+  backgroundConfig.SWITCHED = false;
+  autoMultipleSplats();
+});
 
 // 进入的时候, 开启动画
-export const enterAction = function(fullpageApi) {
+export const enterAction = function (fullpageApi) {
   const moveTo = () => {
-    fullpageApi.moveTo(2)
-  }
+    fullpageApi.moveTo(2);
+  };
 
-  $('.enter').addEventListener('click', moveTo)
+  $(".enter").addEventListener("click", moveTo);
 
-  document.querySelectorAll('.arrow').forEach(ele => {
-    ele.addEventListener('click', moveTo)
-  })
-}
+  document.querySelectorAll(".arrow").forEach((ele) => {
+    ele.addEventListener("click", moveTo);
+  });
+};
 
 export function onLeave(origin, destination, direction) {
   if (origin.anchor !== destination.anchor) {
-    if (origin.anchor === 'intro') {
-      bus.emit(`introLeave`, origin, destination, direction)
-    } else if (origin.anchor === 'main' && destination.anchor === 'intro') {
-      bus.emit(`introEnterBefore`, origin, destination, direction)
+    if (origin.anchor === "intro") {
+      bus.emit(`introLeave`, origin, destination, direction);
+    } else if (origin.anchor === "main" && destination.anchor === "intro") {
+      bus.emit(`introEnterBefore`, origin, destination, direction);
     }
   }
 }
 
 export function afterLoad(origin, destination, direction) {
   if (origin.anchor !== destination.anchor) {
-    if (destination.anchor === 'intro') {
-      bus.emit(`introEnter`, origin, destination, direction)
+    if (destination.anchor === "intro") {
+      bus.emit(`introEnter`, origin, destination, direction);
     }
   }
 }

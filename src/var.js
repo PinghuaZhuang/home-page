@@ -1,17 +1,17 @@
 // 兼容 visibilitychange
 const hiddenProperty =
-	'hidden' in document
-		? 'hidden'
-		: 'webkitHidden' in document
-			? 'webkitHidden'
-			: 'mozHidden' in document
-				? 'mozHidden'
-				: null
+  "hidden" in document
+    ? "hidden"
+    : "webkitHidden" in document
+    ? "webkitHidden"
+    : "mozHidden" in document
+    ? "mozHidden"
+    : null;
 
 export const visibilityChangeEvent = hiddenProperty.replace(
   /hidden/i,
-  'visibilitychange'
-)
+  "visibilitychange"
+);
 
 export const backgroundConfig = {
   SIM_RESOLUTION: 128,
@@ -40,4 +40,4 @@ export const backgroundConfig = {
   SUNRAYS_RESOLUTION: 196,
   SUNRAYS_WEIGHT: 1.0,
   SWITCHED: false,
-}
+};

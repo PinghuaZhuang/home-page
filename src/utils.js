@@ -1,7 +1,8 @@
-import events from 'events'
+import events from "events";
 
-export const $ = (seletor) => document.querySelector(seletor)
+export const $ = (seletor) => document.querySelector(seletor);
 
-export const getOriginalContent = selector => $(selector).getAttribute("original-content")
+export const getOriginalContent = (selector) =>
+  $(selector).getAttribute("original-content");
 
-export const bus = new events.EventEmitter()
+export const bus = new events.EventEmitter();

@@ -21,7 +21,11 @@
     "sort": "sort-package-json package.json",
     "dev": "cross-env NODE_ENV=development npm-run-all --parallel --race watch browser",
     "watch": "rollup -c config/rollup.config.js --watch",
+    "prettier": "prettier --write **/*.js",
     "browser": "cd .runtime & browser-sync start --server --index 'index.html' --files './'"
+  },
+  "dependencies": {
+    "fullpage.js": "^3.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
@@ -47,13 +51,11 @@
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-sass": "^1.2.8",
     "rollup-plugin-uglify": "^6.0.4",
+    "rollup-svg-sprite-loader": "^1.0.3",
     "sass": "^1.26.3",
     "sort-package-json": "^1.50.0"
   },
   "publishConfig": {
     "registry": "https://registry.npm.taobao.org/"
-  },
-  "dependencies": {
-    "fullpage.js": "^3.1.2"
   }
 }
