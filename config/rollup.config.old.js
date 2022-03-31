@@ -8,8 +8,6 @@ import rpug from "rollup-plugin-pug";
 import alias from "rollup-plugin-alias";
 import svgSpriteLoader from "rollup-plugin-svg-sprite-loader";
 import requireContext from "rollup-plugin-require-context";
-import serve from "rollup-plugin-serve";
-import livereload from "rollup-plugin-livereload";
 
 import fg from "fast-glob";
 import pkg from "../package.json";
@@ -49,8 +47,6 @@ module.exports = {
       symbolIdQuery: "icon-[name]",
     }),
     requireContext(),
-    serve(".runtime"),
-    livereload(),
     {
       name: "watch-external",
       async buildStart() {

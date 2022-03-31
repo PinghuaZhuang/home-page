@@ -23,8 +23,7 @@
 
 > 注意:
 >
-> 1. **第一次执行之前要先执行 `yarn watch` 生成 .runtime。然后重新执行 `yarn dev`**。
-> 2. 修改 src/scss/\*\*/\*.scss 文件，要更新 src/scss/\*\*/index.scss 内容才能及时响应。
+> 1. 修改 src/scss/\*\*/\*.scss 文件，要更新 src/scss/\*\*/index.scss 内容才能及时响应。
 
 
 1. 安装依赖
