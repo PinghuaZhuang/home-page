@@ -14,32 +14,31 @@ import livereload from "rollup-plugin-livereload";
 import fg from "fast-glob";
 import pkg from "../package.json";
 import pug from "pug";
-import path from "path";
 import merge from "lodash/merge";
 
-const { getJson } = require("./utils");
-const common = require("./rollup");
+import { getJson, resolve } from "./utils";
+import * as common from "./rollup";
 
 const prod = process.env.NODE_ENV === "production";
 const entry = prod ? "entry.aio.min.js" : "entry.aio.js";
 const dest = prod ? "dist" : ".runtime";
 
-module.exports = {
+export default {
   input: "src/main.js",
   output: {
     file: `${dest}/${entry}`,
-    name: common.name,
+    // name: common.name,
     banner: common.banner,
   },
   plugins: [
     alias({
       resolve: [".js", ".scss", "pug"],
       entries: {
-        "@": path.resolve(__dirname, "../src/"),
+        "@": resolve("../src/"),
       },
     }),
     sass({
-      output: path.resolve(__dirname, `../${dest}/css/bundle.min.css`),
+      output: resolve(`../${dest}/css/bundle.min.css`),
       insert: true,
     }),
     rpug({
@@ -62,8 +61,8 @@ module.exports = {
           ...files,
           ...pugSources,
           ...scssSources,
-          path.resolve(__dirname, "../package.json"),
-          path.resolve(__dirname, "../.homepage"),
+          resolve("../package.json"),
+          resolve("../.homepage"),
         ]) {
           this.addWatchFile(file);
         }
@@ -81,7 +80,7 @@ module.exports = {
           transform: (contents, filename) =>
             pug
               .renderFile(
-                path.resolve(__dirname, "../src/index.pug"),
+                resolve("../src/index.pug"),
                 merge(getJson("../.homepage"), {
                   pkg: getJson("../package.json"),
                 })

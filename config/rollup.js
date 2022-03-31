@@ -1,6 +1,6 @@
-var babel = require("rollup-plugin-babel");
-var replace = require("rollup-plugin-replace");
-var pkg = require("../package.json");
+import babel from "rollup-plugin-babel";
+import replace from "rollup-plugin-replace";
+import pkg from "../package.json";
 
 var version = pkg.version;
 var banner = `/*!
@@ -22,6 +22,4 @@ function getReplace() {
   });
 }
 
-exports.banner = banner;
-exports.getCompiler = getCompiler;
-exports.getReplace = getReplace;
+export { banner, getCompiler, getReplace };
