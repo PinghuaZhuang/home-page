@@ -39,7 +39,10 @@ export default {
     }),
     sass({
       output: resolve(`../${dest}/css/bundle.min.css`),
-      insert: true,
+      options: {
+        outputStyle: prod ? "compressed" : "expanded",
+        sourceMap: true,
+      },
     }),
     rpug({
       locals: pkg,
@@ -48,8 +51,8 @@ export default {
       symbolIdQuery: "icon-[name]",
     }),
     requireContext(),
-    serve(".runtime"),
-    livereload(),
+    !prod && serve(".runtime"),
+    !prod && livereload(),
     {
       name: "watch-external",
       async buildStart() {
