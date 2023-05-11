@@ -3,14 +3,6 @@
 
 炫酷的个人主页.
 
-## 🎯 TODO
-
-- [x] git action
-- [ ] about-me
-- [x] old-blog
-- [ ] photo-wall
-- [ ] wifi-card
-
 
 ## 😆 技术栈
 
