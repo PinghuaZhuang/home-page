@@ -13,8 +13,7 @@
 
 样式使用 `dark-sass` . 使用 `vscode` 插件自动编译生成 `css` 文件.
 
-> **注意**
->
+> **Note**
 > 1. 修改 src/scss/\*\*/\*.scss 文件，要更新 src/scss/\*\*/index.scss 内容才能及时响应。
 
 
